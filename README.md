@@ -1,3 +1,3 @@
 # windows-uac-modify-scripts
 
-uac.vbs: Only tested against Windows 7
+http://www.cookuop.co.uk/set-uac-level-from-gpo-or-registry-or-cmd-or-script
