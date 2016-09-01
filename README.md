@@ -1,3 +1,3 @@
 # windows-uac-modify-scripts
 
-Only tested against Windows 7
+uac.vbs: Only tested against Windows 7
