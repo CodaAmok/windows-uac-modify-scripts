@@ -5,10 +5,10 @@ Dim str, strOS, objShell
 
 str = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\"
 
-function regRead(strKey) 
+function regRead(strKey, value) 
 	Set objShell = CreateObject("WScript.Shell")
-	objLogFile.Write(TIME() & " " & "Checking EnableLUA value" & vbCr)
-	regRead = objShell.RegRead(strKey)
+	objLogFile.Write(TIME() & " " & "Checking " & value & " value" & vbCr)
+	regRead = objShell.RegRead(strKey + value)
 end function
 
 function regWrite()
@@ -38,7 +38,7 @@ strOS = getOS()
 
 Select Case True
 	Case (InStr(strOS,"Windows 10") > 0)
-		If regRead(str + "EnableLUA") = "0" Then
+		If regRead(str, "EnableLUA") = "0" Then
 			objLogFile.Write(TIME() & " " & "UAC is disabled" & vbCr)
 			Call regWrite()
 		Else
@@ -49,7 +49,7 @@ Select Case True
 	Case (InStr(strOS,"Windows 8.1") > 0)
 		objLogFile.Write(TIME() & " " & "Found Win8.1, quitting" & vbCr)
 	Case (InStr(strOS,"Windows 7") > 0)
-		If regRead(str + "EnableLUA") = "0" Then
+		If regRead(str, "EnableLUA") = "0" Then
 			objLogFile.Write(TIME() & " " & "UAC is disabled" & vbCr)
 			Call regWrite()
 		Else
